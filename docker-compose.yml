@@ -2,9 +2,13 @@ services:
  db:
   container_name: micro_mongodb
   image: mongo
+  ports:
+    - 27017:27017
  rabbitmq:
   container_name: micro_rabbitmq
   image: rabbitmq
+  ports:
+    - 5672:5672
  authentication:
   container_name: micro_authentication
   build: authentication
