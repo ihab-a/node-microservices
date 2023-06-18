@@ -20,19 +20,19 @@ module.exports = {
 	microservices : {
 		user: {
 			port : MICROSERVICE_USER_PORT,
-			route : (r="") => `http://127.0.0.1:${MICROSERVICE_USER_PORT}/${route}`,
+			route : (r="") => `http://127.0.0.1:${MICROSERVICE_USER_PORT}/${r}`,
 		},
 		transaction: {
 			port : MICROSERVICE_TRANSACTION_PORT,
-			route : (r="") => `http://127.0.0.1:${MICROSERVICE_TRANSACTION_PORT}/${route}`,
+			route : (r="") => `http://127.0.0.1:${MICROSERVICE_TRANSACTION_PORT}/${r}`,
 		},
 		book: {
 			port : MICROSERVICE_BOOK_PORT,
-			route : (r="") => `http://127.0.0.1:${MICROSERVICE_BOOK_PORT}/${route}`,
+			route : (r="") => `http://127.0.0.1:${MICROSERVICE_BOOK_PORT}/${r}`,
 		},
 		authentication: {
 			port : MICROSERVICE_AUTHENTICATION_PORT,
-			route : (r="") => `http://127.0.0.1:${MICROSERVICE_AUTHENTICATION_PORT}/${route}`,
+			route : (r="") => `http://127.0.0.1:${MICROSERVICE_AUTHENTICATION_PORT}/${r}`,
 		},
 	}
 }

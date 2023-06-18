@@ -1,0 +1,16 @@
+{
+  "name": "microservices",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently --raw \"nodemon -q authentication/main.js\" \"nodemon -q user/main.js\" \"nodemon -q book/main.js\" \"nodemon -q transaction/main.js\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.0",
+    "nodemon": "^2.0.22"
+  }
+}
