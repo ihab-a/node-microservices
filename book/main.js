@@ -1,6 +1,6 @@
 const express = require("express");
 const { ObjectId } = require("mongodb");
-// const transactionConsumer = require("./transactionConsumer");
+const transactionConsumer = require("./transactionConsumer");
 const books = require("./db/db.js")("books").collection("books");
 const { microservices } = require("./env.js");
 
@@ -8,7 +8,7 @@ const app = express();
 
 app.use(express.json());
 
-// transactionConsumer();
+transactionConsumer();
 app.listen(9002, "127.0.0.1", () => {
 	console.log(`books microservice running on [${microservices.book.port}]`);
 });

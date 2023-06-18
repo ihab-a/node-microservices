@@ -2,7 +2,7 @@ const express = require("express");
 const { ObjectId } = require("mongodb");
 const axios = require("axios");
 const auth = require("./middlewares/auth.js");
-// const notifyTransaction = require("./notifyTransaction.js");
+const notifyTransaction = require("./notifyTransaction.js");
 const transactions = require("./db/db.js")("transactions").collection("transactions");
 const { microservices } = require("./env.js");
 
@@ -38,7 +38,7 @@ app.post("/", auth, async (req, res) => {
 	});
 
 	// send transation event (msg)
-	// notifyTransaction(req._user.id, book._id);
+	notifyTransaction(req._user.id, book._id);
 
 	res.send(null);
 })
