@@ -1,10 +1,8 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const users = require("../db/db.js")("users").collection("users");
-const { microservices } = require("../env.js");
-
-const { ENV_SECRET } = process.env;
+const users = require("./db/db.js")("users").collection("users");
+const { microservices, ENV_SECRET } = require("./env.js");
 
 const app = express();
 
@@ -24,6 +22,27 @@ app.post("/login", async (req, res) => {
 
 	if(! await bcrypt.compare(password, user.password))
 		return res.send({ error : "Incorrect password" });
+
+	const token = jwt.sign(
+		{ id : user._id },
+		ENV_SECRET,
+		{ expiresIn : "30d" },
+	);
+
+	return res.send({
+		id: user._id,
+		token,
+	});
+});
+
+
+app.post("/signup", async (req, res) => {
+	const { email, password } = req.body;
+
+	const user = await users.insertOne({
+		email,
+		password : await bcrypt.hash(password, 10)
+	});
 
 	const token = jwt.sign(
 		{ id : user._id },

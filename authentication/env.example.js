@@ -16,6 +16,7 @@ const DB_URI = (() => {
 })();
 
 module.exports = {
+	ENV_SECRET: "d15b9c4c19a67b472edc303d70c4d2e1f15df865e1487ad14dd13bd14cea0eb4e92d6654688e9b6c6d1df3593b0e3811bf4dd473ed5a3603d8cc738ff100b408",
 	DB_URI,
 	microservices : {
 		user: {
