@@ -1,0 +1,39 @@
+services:
+ db:
+  container_name: micro_mongodb
+  image: mongo
+ rabbitmq:
+  container_name: micro_rabbitmq
+  image: rabbitmq
+ authentication:
+  container_name: micro_authentication
+  build: authentication
+  ports:
+   - 9003:9003
+  depends_on:
+   - db
+   - rabbitmq
+ user:
+  container_name: micro_user
+  build: user
+  ports:
+   - 9001:9001
+  depends_on:
+   - db
+   - rabbitmq
+ book:
+  container_name: micro_book
+  build: book
+  ports:
+   - 9002:9002
+  depends_on:
+   - db
+   - rabbitmq
+ transaction:
+  container_name: micro_transaction
+  build: transaction
+  ports:
+   - 9004:9004
+  depends_on:
+   - db
+   - rabbitmq
