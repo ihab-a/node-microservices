@@ -8,7 +8,7 @@ const app = express();
 
 app.use(express.json());
 
-app.listen(9003, "127.0.0.1", () => {
+app.listen(9003, () => {
 	console.log(`authentication microservice running on [${microservices.authentication.port}]`);
 });
 

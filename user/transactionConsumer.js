@@ -1,9 +1,10 @@
 const users = require("./db/db.js")("users").collection("users");
 const { ObjectId } = require("mongodb");
+const { AMQP_URI } = require("./env.js")
 const amqp = require("amqplib");
 
 module.exports = async () => {
-	const connection = await amqp.connect("amqp://127.0.0.1:5672");
+	const connection = await amqp.connect(AMQP_URI);
 
 	const channel = await connection.createChannel();
 

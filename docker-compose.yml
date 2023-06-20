@@ -4,11 +4,13 @@ services:
   image: mongo
   ports:
     - 27017:27017
+  restart: always
  rabbitmq:
   container_name: micro_rabbitmq
   image: rabbitmq
   ports:
     - 5672:5672
+  restart: always
  authentication:
   container_name: micro_authentication
   build: authentication
@@ -17,6 +19,7 @@ services:
   depends_on:
    - db
    - rabbitmq
+  restart: always
  user:
   container_name: micro_user
   build: user
@@ -25,6 +28,7 @@ services:
   depends_on:
    - db
    - rabbitmq
+  restart: always
  book:
   container_name: micro_book
   build: book
@@ -33,6 +37,7 @@ services:
   depends_on:
    - db
    - rabbitmq
+  restart: always
  transaction:
   container_name: micro_transaction
   build: transaction
@@ -41,3 +46,4 @@ services:
   depends_on:
    - db
    - rabbitmq
+  restart: always

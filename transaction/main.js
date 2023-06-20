@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 
-app.listen(9004, "127.0.0.1", () => {
+app.listen(9004, () => {
 	console.log(`transaction microservice running on [${microservices.transaction.port}]`);
 });
 

@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 
 transactionConsumer();
-app.listen(9001, "127.0.0.1", () => {
+app.listen(9001, () => {
 	console.log(`users microservice running on [${microservices.user.port}]`);
 });
 
