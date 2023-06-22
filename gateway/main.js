@@ -53,8 +53,21 @@ app.get("/books", async (req, res) => {
 	const { data } = await axios.get(microservices.book.route());
 	res.send(data);
 });
+app.post("/books", async (req, res) => {
+	const { data } = await axios.post(microservices.book.route(), {
+		name : req.body.name,
+		author : req.body.author,
+		price : req.body.price ?? 0,
+		quantity : req.body.quantity ?? 1,
+	});
+	res.send(data);
+});
 app.get("/books/:id", async (req, res) => {
 	const { data } = await axios.get(microservices.book.route(req.params.id));
+	res.send(data);
+});
+app.delete("/books/:id", async (req, res) => {
+	const { data } = await axios.delete(microservices.book.route(req.params.id));
 	res.send(data);
 });
 
